@@ -9,9 +9,16 @@ export function SiteFooter() {
             <Logo />
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed">
-            A digital agency building websites, growing brands, and shipping AI
-            automation that saves teams real time.
+            A website design agency building modern, mobile-friendly,
+            SEO-ready sites that help businesses attract customers.
           </p>
+          <a
+            href="#contact"
+            className="mt-6 inline-flex items-center rounded-full bg-blue px-5 py-2.5 text-sm font-medium text-white hover:brightness-110 transition"
+          >
+            Request a Website
+          </a>
+
         </div>
 
         <div>

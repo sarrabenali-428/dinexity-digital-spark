@@ -4,8 +4,11 @@ import { SiteFooter } from "@/components/SiteFooter";
 import {
   ArrowRight,
   MonitorSmartphone,
-  Megaphone,
-  Cpu,
+  Smartphone,
+  Rocket,
+  RefreshCw,
+  ShoppingCart,
+  Search,
   Zap,
   Target,
   Layers,
@@ -15,6 +18,24 @@ import {
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Dinexity — Professional Website Design Agency" },
+      {
+        name: "description",
+        content:
+          "Dinexity builds modern, professional business websites that attract customers: responsive design, landing pages, redesigns, e-commerce and SEO-ready builds.",
+      },
+      { property: "og:title", content: "Dinexity — Professional Website Design Agency" },
+      {
+        property: "og:description",
+        content:
+          "Modern, mobile-friendly, SEO-ready websites for businesses. Get a free demo of your new site.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
 });
 
 /* ---------- Reusable bits ---------- */
@@ -45,6 +66,23 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
+function PrimaryCta({
+  children = "Get a Free Demo",
+  className = "",
+}: {
+  children?: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <a
+      href="#contact"
+      className={`inline-flex items-center gap-2 rounded-full bg-blue px-6 py-3.5 text-sm font-medium text-white hover:brightness-110 transition ${className}`}
+    >
+      {children} <ArrowRight size={16} />
+    </a>
+  );
+}
+
 /* ---------- Page ---------- */
 
 function Index() {
@@ -71,7 +109,6 @@ function Index() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-navy text-white pt-32 pb-24 md:pt-40 md:pb-32">
-      {/* Circular motif */}
       <div
         aria-hidden
         className="pointer-events-none absolute -right-40 -top-20 h-[42rem] w-[42rem] opacity-60"
@@ -88,35 +125,30 @@ function Hero() {
 
       <div className="container-x relative">
         <div className="max-w-3xl fade-up">
-          <Eyebrow>Digital Agency</Eyebrow>
+          <Eyebrow>Website Design Agency</Eyebrow>
           <h1 className="mt-5 font-display text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05]">
-            We build websites, grow brands, and automate the busywork.
+            We build professional websites that bring you customers.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/70 leading-relaxed">
-            Dinexity is a small, senior team shipping high-performance sites,
-            social campaigns that convert, and AI automation that gives your
-            team its calendar back.
+            Dinexity designs and builds modern business websites — fast,
+            mobile-friendly, and SEO-ready. See a free demo of your new site
+            before you commit to anything.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
+            <PrimaryCta>Get a Free Demo</PrimaryCta>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-blue px-6 py-3.5 text-sm font-medium text-white hover:brightness-110 transition"
-            >
-              Start a project <ArrowRight size={16} />
-            </a>
-            <a
-              href="#services"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm font-medium text-white/90 hover:bg-white/5 transition"
             >
-              See what we do
+              Request a Website
             </a>
           </div>
 
           <div className="mt-16 grid grid-cols-3 gap-6 max-w-lg">
             {[
-              ["120+", "Projects shipped"],
+              ["120+", "Websites launched"],
               ["4.9/5", "Client rating"],
-              ["11 yrs", "Combined craft"],
+              ["3 wks", "Typical launch time"],
             ].map(([n, l]) => (
               <div key={l}>
                 <div className="font-display text-2xl font-semibold text-white">
@@ -137,21 +169,39 @@ function Hero() {
 const services = [
   {
     icon: MonitorSmartphone,
-    title: "Website Design & Development",
-    desc: "Brand sites, e-commerce, and web apps built for speed, SEO, and conversion. Design that ships, code that lasts.",
-    bullets: ["Marketing sites & landing pages", "Shopify & headless commerce", "Custom web apps"],
+    title: "Professional Business Websites",
+    desc: "A site that looks credible on the first click and turns visitors into enquiries.",
+    bullets: ["Clear structure and copy", "Fast, secure hosting setup", "Easy to update yourself"],
   },
   {
-    icon: Megaphone,
-    title: "Social Media Marketing",
-    desc: "Strategy, content, and paid campaigns that turn audiences into customers. Reporting that shows the money, not just likes.",
-    bullets: ["Content strategy & production", "Paid & organic campaigns", "Community & analytics"],
+    icon: Smartphone,
+    title: "Responsive, Mobile-Friendly Design",
+    desc: "Most of your customers arrive on a phone. Your site is built for them first.",
+    bullets: ["Phone, tablet, desktop", "Tap-friendly navigation", "Fast on mobile networks"],
   },
   {
-    icon: Cpu,
-    title: "AI Automation",
-    desc: "Workflow automation, AI chatbots, and internal tooling that remove hours from your week and errors from your process.",
-    bullets: ["Workflow automation", "AI chat & support agents", "Internal tools & integrations"],
+    icon: Rocket,
+    title: "Landing Pages",
+    desc: "Single-purpose pages built for ads and campaigns, focused on one action.",
+    bullets: ["Offer-led layout", "Lead forms and tracking", "Built to test and iterate"],
+  },
+  {
+    icon: RefreshCw,
+    title: "Website Redesign",
+    desc: "Keep what works, fix what doesn't. A modern rebuild without losing your traffic.",
+    bullets: ["Design refresh", "Speed and structure fixes", "Safe migration and redirects"],
+  },
+  {
+    icon: ShoppingCart,
+    title: "E-commerce Websites",
+    desc: "Online stores that are simple to run and easy for customers to buy from.",
+    bullets: ["Product and category pages", "Checkout and payments", "Shipping and stock setup"],
+  },
+  {
+    icon: Search,
+    title: "SEO-Ready Websites",
+    desc: "Built clean from day one so search engines can find and rank your pages.",
+    bullets: ["Technical SEO basics", "Page titles and metadata", "Speed and Core Web Vitals"],
   },
 ];
 
@@ -160,14 +210,13 @@ function Services() {
     <section id="services" className="section-pad bg-white">
       <div className="container-x">
         <div className="max-w-2xl">
-          <Eyebrow>What we do</Eyebrow>
+          <Eyebrow>What we build</Eyebrow>
           <h2 className="mt-4 font-display text-3xl md:text-5xl font-semibold text-navy">
-            Three pillars. One team that ships.
+            Websites, done properly.
           </h2>
           <p className="mt-5 text-slate-body text-lg leading-relaxed">
-            We work across the full stack of modern digital growth — from the
-            site itself, to the audience visiting it, to the automations
-            running quietly behind it.
+            We do one thing: build websites businesses can grow on. Every build
+            is responsive, fast, and ready to be found on Google.
           </p>
         </div>
 
@@ -188,9 +237,7 @@ function Services() {
                 <h3 className="mt-6 font-display text-xl font-semibold text-navy">
                   {s.title}
                 </h3>
-                <p className="mt-3 text-slate-body leading-relaxed">
-                  {s.desc}
-                </p>
+                <p className="mt-3 text-slate-body leading-relaxed">{s.desc}</p>
                 <ul className="mt-5 space-y-2 text-sm text-slate-body">
                   {s.bullets.map((b) => (
                     <li key={b} className="flex items-center gap-2">
@@ -203,11 +250,18 @@ function Services() {
                   href="#contact"
                   className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-blue hover:gap-2.5 transition-all"
                 >
-                  Learn more <ArrowRight size={14} />
+                  Get a free demo <ArrowRight size={14} />
                 </a>
               </article>
             );
           })}
+        </div>
+
+        <div className="mt-12 flex flex-wrap items-center gap-4">
+          <PrimaryCta>Request a Website</PrimaryCta>
+          <p className="text-sm text-slate-body">
+            Not sure which fits? We'll tell you straight in one call.
+          </p>
         </div>
       </div>
     </section>
@@ -217,23 +271,23 @@ function Services() {
 const whyPoints = [
   {
     icon: Zap,
-    title: "Speed without shortcuts",
-    desc: "Most engagements ship a first meaningful result inside three weeks.",
+    title: "Launched in weeks",
+    desc: "Most business sites go live within three weeks of kickoff.",
   },
   {
     icon: Target,
-    title: "Results, measured",
-    desc: "Every project has a KPI. Every month you get a straight-talk report.",
+    title: "Built to convert",
+    desc: "Clear calls-to-action and copy aimed at enquiries, not decoration.",
   },
   {
     icon: Layers,
-    title: "Technical depth",
-    desc: "Senior engineers on every build. No handoffs, no juniors learning on your dime.",
+    title: "Fast and technical",
+    desc: "Senior developers on every build. Clean code, high Lighthouse scores.",
   },
   {
     icon: Handshake,
-    title: "Real partnership",
-    desc: "One team, one channel, a founder in the room. We stay after launch.",
+    title: "Support after launch",
+    desc: "We stay on for updates, fixes, and improvements as you grow.",
   },
 ];
 
@@ -245,18 +299,22 @@ function Why() {
           <div>
             <Eyebrow>Why Dinexity</Eyebrow>
             <h2 className="mt-4 font-display text-3xl md:text-5xl font-semibold leading-tight">
-              A studio built to move fast and stay honest.
+              A website agency that ships on time.
             </h2>
             <p className="mt-6 text-white/70 text-lg leading-relaxed max-w-md">
-              We pick fewer clients so the work stays sharp. That means senior
-              attention, quick decisions, and outcomes you can actually point to.
+              We take fewer projects so each site gets senior attention. You get
+              a site that loads fast, reads clearly, and earns trust.
             </p>
 
             <div className="mt-10 grid grid-cols-2 gap-6 max-w-md">
-              <Stat n="92%" l="of clients see lift within 60 days" />
-              <Stat n="3.4×" l="average ROAS on paid social" />
               <Stat n="98" l="average Lighthouse performance" />
+              <Stat n="100%" l="responsive on every device" />
+              <Stat n="3 wks" l="average time to launch" />
               <Stat n="< 24h" l="response time, always" />
+            </div>
+
+            <div className="mt-10">
+              <PrimaryCta>Get a Free Demo</PrimaryCta>
             </div>
           </div>
 
@@ -297,10 +355,10 @@ function Stat({ n, l }: { n: string; l: string }) {
 }
 
 const steps = [
-  { title: "Discover", desc: "We dig into your goals, users, and constraints. No boilerplate discovery decks." },
-  { title: "Design & Strategize", desc: "A plan you can read in ten minutes. Designs that solve the actual problem." },
-  { title: "Build & Launch", desc: "Weekly demos, no surprises. We ship, then we polish in the light." },
-  { title: "Grow & Optimize", desc: "Post-launch we run the numbers, refine, and keep compounding results." },
+  { title: "Free Demo", desc: "Tell us about your business. We show you a demo of your new site — no cost." },
+  { title: "Plan & Design", desc: "We agree pages, copy direction, and design. You approve before we build." },
+  { title: "Build & Launch", desc: "We build, test on every device, connect your domain, and go live." },
+  { title: "Improve & Support", desc: "Updates, speed checks, and SEO fixes so the site keeps working for you." },
 ];
 
 function Process() {
@@ -308,7 +366,7 @@ function Process() {
     <section id="process" className="section-pad bg-mist">
       <div className="container-x">
         <div className="max-w-2xl">
-          <Eyebrow>How we work</Eyebrow>
+          <Eyebrow>How it works</Eyebrow>
           <h2 className="mt-4 font-display text-3xl md:text-5xl font-semibold text-navy">
             Four steps. No mystery.
           </h2>
@@ -330,6 +388,10 @@ function Process() {
             </li>
           ))}
         </ol>
+
+        <div className="mt-12">
+          <PrimaryCta>Request a Website</PrimaryCta>
+        </div>
       </div>
     </section>
   );
@@ -337,23 +399,23 @@ function Process() {
 
 const cases = [
   {
-    tag: "E-commerce",
+    tag: "E-commerce website",
     title: "Northline Supply",
-    desc: "Rebuilt the storefront on headless Shopify and rewired the acquisition funnel.",
+    desc: "Rebuilt the online store with faster product pages and a simpler checkout.",
     metrics: [
-      ["+64%", "revenue in 90 days"],
+      ["+64%", "online revenue in 90 days"],
       ["-38%", "page load time"],
-      ["2.1×", "return on ad spend"],
+      ["+41%", "mobile conversions"],
     ],
   },
   {
-    tag: "SaaS + AI",
-    title: "Fielder CRM",
-    desc: "Shipped an AI support agent and automated the top ten repeat tickets.",
+    tag: "Website redesign",
+    title: "Fielder Services",
+    desc: "Replaced a dated site with a clean, mobile-first build and clear enquiry paths.",
     metrics: [
-      ["71%", "tickets auto-resolved"],
-      ["+22 NPS", "in one quarter"],
-      ["11h/wk", "returned to the team"],
+      ["2.3×", "enquiries per month"],
+      ["96", "Lighthouse performance"],
+      ["+58%", "organic traffic"],
     ],
   },
 ];
@@ -366,14 +428,14 @@ function Work() {
           <div className="max-w-xl">
             <Eyebrow>Selected work</Eyebrow>
             <h2 className="mt-4 font-display text-3xl md:text-5xl font-semibold text-navy">
-              Outcomes we're proud to point at.
+              Sites that earned their keep.
             </h2>
           </div>
           <a
             href="#contact"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-blue"
           >
-            See more work <ArrowRight size={14} />
+            Get a free demo <ArrowRight size={14} />
           </a>
         </div>
 
@@ -416,13 +478,16 @@ function Testimonial() {
       <div className="container-x max-w-3xl text-center">
         <Quote className="mx-auto text-blue" size={32} />
         <blockquote className="mt-6 font-display text-2xl md:text-3xl font-medium leading-snug">
-          "Dinexity replaced three vendors for us. The site is faster, the ads
-          actually work, and their AI agent handles most of our support queue.
-          They act like part of the team."
+          "Dinexity showed us a demo before we paid anything. Three weeks later
+          we had a site that loads instantly, works on every phone, and finally
+          brings in enquiries."
         </blockquote>
         <div className="mt-8 text-sm text-white/70">
           <div className="font-medium text-white">Priya Anand</div>
           <div>Founder, Northline Supply</div>
+        </div>
+        <div className="mt-10">
+          <PrimaryCta>Get a Free Demo</PrimaryCta>
         </div>
       </div>
     </section>
@@ -431,9 +496,9 @@ function Testimonial() {
 
 const team = [
   { name: "Marcus Vale", role: "Founder, Strategy" },
-  { name: "Ana Okafor", role: "Design Lead" },
-  { name: "Ravi Shen", role: "Engineering Lead" },
-  { name: "Elena Cruz", role: "Growth & Social" },
+  { name: "Ana Okafor", role: "Web Design Lead" },
+  { name: "Ravi Shen", role: "Development Lead" },
+  { name: "Elena Cruz", role: "SEO & Content" },
 ];
 
 function Team() {
@@ -444,11 +509,12 @@ function Team() {
           <div>
             <Eyebrow>Who we are</Eyebrow>
             <h2 className="mt-4 font-display text-3xl md:text-5xl font-semibold text-navy">
-              A small team of senior operators.
+              A small team of website specialists.
             </h2>
             <p className="mt-6 text-slate-body text-lg leading-relaxed">
-              Dinexity is four people who have shipped for startups, retailers,
-              and fintechs. No account managers between you and the work.
+              Dinexity is four people who design, build, and launch websites for
+              small businesses, retailers, and service companies. No account
+              managers between you and the work.
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
@@ -486,19 +552,20 @@ function Contact() {
 
           <div className="grid lg:grid-cols-2 gap-12 relative">
             <div>
-              <Eyebrow>Start a project</Eyebrow>
+              <Eyebrow>Request a website</Eyebrow>
               <h2 className="mt-4 font-display text-3xl md:text-5xl font-semibold leading-tight">
-                Tell us what you want to ship.
+                Get a free demo of your new site.
               </h2>
               <p className="mt-5 text-white/70 leading-relaxed max-w-md">
-                Send a short brief or book a 20-minute intro call. We reply
-                within one business day, always with a real person.
+                Send a few details and we'll show you a demo built for your
+                business — free, no obligation. We reply within one business
+                day, always with a real person.
               </p>
               <div className="mt-8 space-y-3 text-sm text-white/80">
                 <div>hello@dinexity.com</div>
                 <div>+1 (415) 555-0140</div>
                 <a
-                  href="#"
+                  href="#contact"
                   className="inline-flex items-center gap-2 mt-2 rounded-full border border-white/25 px-5 py-2.5 hover:bg-white/5 transition"
                 >
                   Book a call <ArrowRight size={14} />
@@ -512,26 +579,27 @@ function Contact() {
             >
               <Field label="Name" id="name" />
               <Field label="Email" id="email" type="email" />
-              <Field label="Company" id="company" />
+              <Field label="Business" id="company" />
+              <Field label="Current website (optional)" id="site" />
               <div>
                 <label
                   htmlFor="msg"
                   className="text-xs uppercase tracking-widest text-white/60"
                 >
-                  Project brief
+                  What do you need?
                 </label>
                 <textarea
                   id="msg"
                   rows={4}
                   className="mt-2 w-full rounded-xl bg-navy/60 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-blue"
-                  placeholder="What are you building, and by when?"
+                  placeholder="New website, redesign, landing page, online store..."
                 />
               </div>
               <button
                 type="submit"
                 className="mt-2 inline-flex justify-center items-center gap-2 rounded-full bg-blue px-6 py-3.5 text-sm font-medium text-white hover:brightness-110 transition"
               >
-                Send brief <ArrowRight size={16} />
+                Get a Free Demo <ArrowRight size={16} />
               </button>
             </form>
           </div>

@@ -10,6 +10,7 @@ const nav = [
   { href: "#contact", label: "Contact" },
 ];
 
+
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -50,8 +51,9 @@ export function SiteHeader() {
           href="#contact"
           className="hidden md:inline-flex items-center rounded-full bg-blue px-5 py-2.5 text-sm font-medium text-white hover:brightness-110 transition"
         >
-          Start a project
+          Get a Free Demo
         </a>
+
 
         <button
           className="md:hidden p-2 -mr-2"
@@ -80,8 +82,9 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center rounded-full bg-blue px-5 py-3 text-sm font-medium"
             >
-              Start a project
+              Get a Free Demo
             </a>
+
           </div>
         </div>
       )}
