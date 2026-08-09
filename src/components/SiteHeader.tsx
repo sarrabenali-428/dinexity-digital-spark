@@ -51,8 +51,9 @@ export function SiteHeader() {
           href="#contact"
           className="hidden md:inline-flex items-center rounded-full bg-blue px-5 py-2.5 text-sm font-medium text-white hover:brightness-110 transition"
         >
-          Start a project
+          Get a Free Demo
         </a>
+
 
         <button
           className="md:hidden p-2 -mr-2"
