@@ -82,8 +82,9 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center rounded-full bg-blue px-5 py-3 text-sm font-medium"
             >
-              Start a project
+              Get a Free Demo
             </a>
+
           </div>
         </div>
       )}
