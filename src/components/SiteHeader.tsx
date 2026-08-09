@@ -10,6 +10,7 @@ const nav = [
   { href: "#contact", label: "Contact" },
 ];
 
+
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
